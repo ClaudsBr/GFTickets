@@ -1,0 +1,55 @@
+@model IEnumerable<ClaudEventos.Models.TipoEvento>
+@{
+    Layout = "_LayoutAdmin";
+}
+<h2></b>&#x1F3B8; <b>Tipo de Show </b>&#x1F3B8;</h2>
+
+<a asp-action="NovoTipoEvento" asp-controller="Gestao" class="btn btn-success"> Adicionar Novo Tipo de Show</a>
+<hr/>
+<script>
+    $(document).ready( function () {
+    $('#tipoEvento').DataTable({
+        "info": false, 
+        "language" : {
+            "lengthMenu": " _MENU_ registros por página",
+            "zeRecords": "Desculpe, Nada foi encontrado",
+            "info": "Exibindo _PAGE_ de _PAGES_",
+            "infoEmpty": "Nenhum registro disponível",
+            "search": "Buscar",
+            "paginate": {
+                "first": "Primeira",
+                "last": "Última",
+                "next": "Próxima",
+                "previous": "Anterior"
+            }
+        }
+    });
+} );
+</script>
+
+<table class="table table-sm table-bordered" id="tipoEvento">
+    <thead class="thead-dark">
+        <tr>
+            <th> Id </th>
+            <th> Estilo Musical </th>
+            <th> Editar </th>
+            <th> Deletar </th>            
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var tipo in Model) {
+         <tr>
+             <td>@tipo.Id</td>
+             <td>@tipo.Nome</td>
+             <td><a class="btn btn-warning" href="/Gestao/EditarTipoEvento/@tipo.Id">Editar</a></td>
+             <td>
+                 <form asp-action="Deletar" asp-controller="TipoEventos" >
+                     <input type="hidden" name="id" id="id" value="@tipo.Id">
+                    <button class="btn btn-danger">Deletar</button>
+                 </form>
+            </td>
+         </tr>             
+       } 
+    </tbody>
+
+</table>

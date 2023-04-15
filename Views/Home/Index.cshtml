@@ -1,0 +1,67 @@
+﻿
+@using ClaudEventos.Models;
+@model List<Evento>
+
+@{ 
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GFTickets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/front.css">
+   
+</head>
+<body>
+    <div>
+            
+        <div id="topbar" style="size: 30px;">
+            <b>GFTickets</b> 
+            <div id="login">
+                <a href="../Identity/Account/Register" >Registro&nbsp;</a>
+                
+                <a href="../Identity/Account/Login">&nbsp;Login</a>
+                <div id="gestao">
+                    <a href="https://localhost:5001/Gestao/">Gerenciar Eventos&nbsp;</a>
+                    <a href="https://localhost:5001/Home/Privacy">&nbsp;&nbsp;Privacidade</a>
+                </div>  
+            </div>
+                                
+        </div>
+
+                 
+    </div>
+    <br><br><h2 style="font-size: 40; color: gold"> Sejam Bem Vindos a GFTickets!</h2><br><br>
+
+    <h3 style="color: silver;">Ingressos à Venda</h3><br>
+       <div class="row" style="align-items: center;">
+           @foreach (var lista in Model)
+           {
+               <div class="col-4">
+                   <div class="card mb-4">
+                       <div class="card-header" style="background-color: darkgrey;">
+                           <h3 class="my-0 font-weight-normal">
+                               <label style="font-size: 30px; color: black"><b> @lista.Nome </b></label>
+                           </h3>
+                           <img src="@lista.fotoURL" height="200" width="200" ></img>
+                           <h4 class="my-0 font-weight-normal" >
+                               <label style="font-size: 15px; color: black">Local: <b>@lista.localDoEvento.Nome </b></label><br>
+                               <label style="font-size: 15px; color: black">Data:<b> @lista.dataDoEvento.ToString("dd/MM/yyyy") </b></label><br>
+                               <label style="font-size: 15px; color: black">Preço do Ingresso:<b> R$ @lista.valorDoIngresso,00 </b></label><br>
+                               <label style="font-size: 15px; color: black">Ingressos Disponíveis:<b>@lista.capacidadeDoEvento  </b></label><br>
+                           </h4>
+                           <a class="btn btn-success" id="btncomprar" data-toggle="modal" data-target="#myModal" asp-controller="Compra" asp-action="Comprar">Comprar</a>
+                       </div> 
+                   </div>
+               </div>
+           }
+           
+       </div>
+    
+</body>
+
+</html>

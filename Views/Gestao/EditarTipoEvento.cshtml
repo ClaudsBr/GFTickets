@@ -1,0 +1,14 @@
+@model ClaudEventos.DTO.TipoEventoDTO
+@{
+    Layout = "_LayoutAdmin";
+}
+<h3> Editar Tipo de Show </h3>
+<form class="form-horizontal" asp-controller="TipoEventos" asp-action="Atualizar" method="POST">
+    
+    <label asp-for="Nome"><b>Tipo de Show</b></label>
+    <input type="hidden" asp-for="Id" >
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o Estilo Musical do Show"></input>
+    <span asp-validation-for="Nome"></span>
+    
+    <br><button class="btn btn-secondary">Atualizar</button>
+</form>

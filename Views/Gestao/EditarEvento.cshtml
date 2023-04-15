@@ -1,0 +1,39 @@
+@model ClaudEventos.DTO.EventoDTO
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<h3>Editar Evento</h3>
+<hr/>
+<form class="form-horizontal" asp-controller="Eventos" asp-action="Atualizar" method="POST">
+    <input type="hidden" asp-for="Id">
+    
+    <label asp-for="Nome"><b>Artista</b></label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Nome do Artista">
+    <span asp-validation-for="Nome"></span><br>
+    
+    <br><label asp-for="capacidadeDoEvento"><b>Capacidade</b></label>
+    <input type="text" asp-for="capacidadeDoEvento" class="form-control" placeholder="Capacidade do Evento">
+    <span asp-validation-for="capacidadeDoEvento"></span><br>
+
+    <br><label asp-for="dataDoEvento"><b>Data</b></label>
+    <input type="date" asp-for="dataDoEvento" class="form-control" placeholder="Data do Evento">
+    <span asp-validation-for="dataDoEvento"></span><br>
+
+    <br><label asp-for="valorDoIngresso"><b>Valor do Ingresso</b></label>
+    <input type="number" asp-for="valorDoIngresso" class="form-control" placeholder="Preço do Ingresso">
+    <span asp-validation-for="valorDoIngresso"></span><br>
+
+    <br><label asp-for="fotoURL"><b>Imagem do Evento</b></label>
+    <input type="text" asp-for="fotoURL" class="form-control" placeholder="URL da imagem">
+    <span asp-validation-for="fotoURL"></span><br>
+   
+    
+    <br><label asp-for="localDoEventoID"><b>Local do Evento</b></label>
+    <select class="form-control" asp-for="localDoEventoID" asp-items='@(new SelectList(@ViewBag.LocalEventos, "Id", "Nome"))'></select>
+
+    <br><label asp-for="tipoDeEventoID"><b>Estilo Musical</b></label>
+    <select class="form-control" asp-for="tipoDeEventoID" asp-items='@(new SelectList(@ViewBag.TipoEventos, "Id", "Nome"))'></select>
+    
+    <br><button class="btn btn-secondary">Atualizar</button> 
+</form>

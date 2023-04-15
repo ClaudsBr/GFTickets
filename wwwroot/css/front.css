@@ -1,0 +1,54 @@
+#topbar {
+    height: 65px;
+    background-color: #19191a;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 15px;
+    color: white;
+}
+#login{
+    height: 30px;
+    background-color: #19191a;
+    text-align: right;
+    font-size: 15px;
+    padding-top: 0;
+    color: white;
+}
+#gestao{
+    height: 30px;
+    background-color: #19191a;
+    text-align: left;
+    font-size: 15px;
+    padding-top: 0;
+    color: white;
+}
+a { color: inherit; } 
+#compras{
+    color: silver;
+}
+#modal-body{
+    color: #19191a;
+}
+
+h2{
+    color: gold;
+}
+h3{
+    color: gold;
+}
+#produtoForm{
+    color: rgb(199, 190, 190);
+}
+body {
+    background-image: url("https://u3v8d4z2.stackpathcdn.com/wp-content/uploads/2015/02/madison-square-garden-Nova-York-1024x683.jpg");
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: antiquewhite;
+    
+}
+
+#table-scroll {
+    inline-size: 600px;
+    overflow-y: scroll;
+}

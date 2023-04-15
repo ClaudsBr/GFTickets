@@ -1,0 +1,13 @@
+@model ClaudEventos.Models.Estoque
+@{
+    Layout = "_LayoutAdmin";
+}
+<h3>Novo Estoque </h3>
+<hr/>
+<form class="form-horizontal" method="POST" asp-controller="Estoque" asp-action="Salvar">
+    <label asp-for="Evento"><b>Evento</b></label>
+    <select class="form-control" asp-for="EventoId" asp-items='@(new SelectList(@ViewBag.Eventos,"Id","Nome"))'></select>
+    <br><label asp-for="Quantidade"><b>Capacidade do Evento</b></label>
+    <br><input asp-for="Quantidade" placeholder="Numero de Ingressos do Evento" class="form-control">
+    <br><button class="btn btn-secondary"> Adicionar Capacidade do Evento</button> 
+</form>

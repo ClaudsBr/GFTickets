@@ -1,0 +1,65 @@
+@model IEnumerable<ClaudEventos.Models.Evento>
+@{
+    Layout = "_LayoutAdmin";
+}
+<h2></b>&#x1F3B8; <b> Eventos </b>&#x1F3B8;</h2>
+<a asp-action="NovoEvento" asp-controller="Gestao" class="btn btn-success"> Adicionar Evento</a>
+<hr/>
+
+<script>
+    $(document).ready( function () {
+    $('#evento').DataTable({
+        "info": false, 
+        "language" : {
+            "lengthMenu": " _MENU_ registros por página",
+            "zeRecords": "Desculpe, Nada foi encontrado",
+            "info": "Exibindo _PAGE_ de _PAGES_",
+            "infoEmpty": "Nenhum registro disponível",
+            "search": "Buscar",
+            "paginate": {
+                "first": "Primeira",
+                "last": "Última",
+                "next": "Próxima",
+                "previous": "Anterior"
+            }
+        }
+    });
+} );
+</script>
+
+<table class="table table-sm table-bordered" id="evento">
+    <thead class="thead-dark">
+        <tr>
+            
+            <th> Id </th>
+            <th> Nome do Artista </th>
+            <th> Capacidade </th>
+            <th> Data do Evento</th>
+            <th> Valor do Ingresso </th>  
+            <th> Local do Show </th>
+            <th> URL foto </th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var evento in Model) {
+         <tr>
+             
+             <td>@evento.Id</td>
+             <td>@evento.Nome</td>
+             <td>@evento.capacidadeDoEvento</td>
+             <td>@evento.dataDoEvento.ToString("dd/MM/yyyy")</td>
+             <td>R$ @evento.valorDoIngresso,00</td>
+             <td>@evento.localDoEvento.Nome</td>
+             
+             <td><a class="btn btn-warning" href="/Gestao/EditarEvento/@evento.Id">Editar</a></td>
+             <td>
+                 <form asp-action="Deletar" asp-controller="Eventos" >
+                     <input type="hidden" name="id" id="id" value="@evento.Id">
+                    <button class="btn btn-danger">Deletar</button>
+                 </form>
+            </td>
+         </tr>             
+       } 
+    </tbody>
+
+</table>

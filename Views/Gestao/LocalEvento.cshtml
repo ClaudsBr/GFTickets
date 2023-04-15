@@ -1,0 +1,57 @@
+@{
+    Layout = "_LayoutAdmin";
+}
+<h2></b>&#x1F3B8; <b>Casa de Show </b>&#x1F3B8;</h2>
+<a asp-action="NovoLocalEvento" asp-controller="Gestao" class="btn btn-success"> Adicionar Nova Casa de Show</a>
+<hr/>
+
+
+<script>
+    $(document).ready( function () {
+    $('#localEvento').DataTable({
+        "info": false, 
+        "language" : {
+            "lengthMenu": " _MENU_ registros por página",
+            "zeRecords": "Desculpe, Nada foi encontrado",
+            "info": "Exibindo _PAGE_ de _PAGES_",
+            "infoEmpty": "Nenhum registro disponível",
+            "search": "Buscar",
+            "paginate": {
+                "first": "Primeira",
+                "last": "Última",
+                "next": "Próxima",
+                "previous": "Anterior"
+            }
+        }
+    });
+} );
+</script>
+
+<table class="table table-sm table-bordered" id="localEvento">
+    <thead class="thead-dark">
+        <tr>
+            <th> Id </th>
+            <th> Nome </th>
+            <th> Endereço</th>
+            <th> Editar </th>
+            <th> Deletar </th>            
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var local in Model) {
+         <tr>
+             <td>@local.Id</td>
+             <td>@local.Nome</td>
+             <td>@local.Endereco</td>
+             <td><a class="btn btn-warning" href="/Gestao/EditarLocalEvento/@local.Id">Editar</a></td>
+             <td>
+                 <form asp-action="Deletar" asp-controller="LocalEventos" >
+                     <input type="hidden" name="id" id="id" value="@local.Id">
+                    <button class="btn btn-danger">Deletar</button>
+                 </form>
+            </td>
+         </tr>             
+       } 
+    </tbody>
+
+</table>
